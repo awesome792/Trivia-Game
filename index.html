@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<link rel="stylesheet" type="text/css" href="assets/javascript/app.js">
+<link href="https://fonts.googleapis.com/css?family=BioRhyme+Expanded" rel="stylesheet">
+
+<title>TriviaGO</title>
+<div id="header" style="background-image: url(http://eskipaper.com/images/ancient-backgrounds-1.jpg"><nav id="navbar"><h1 id="name">Trivia Go</h1></nav></div></div>
+</body>
+<div></div>
+<script>
+// Questions in an Array
+// online help, helped me understand using different choices and answers selections.
+
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
+
+var questions = [
+    [ "What year did the Challenger Space Shuttle explode?", "1981", "1992", "1986", "C" ],
+	[ "What year did the Titanic ship sink?", "1922", "1912", "1911", "B" ],
+	[ "What is the longest river in the state of Florida?", "St. John River", "Okeechobee River", "Down by the River", "A" ],
+	[ "The oldest city in Florida is?", "Jacksonville", "Fort Pierce", "St Augustine", "C" ]
+];
+
+
+function _(x){
+	return document.getElementById(x);
+}
+// // function for how many questions the user got right out of 4 questions. 
+
+function renderQuestion(){
+	test = _("test");
+	if(pos >= questions.length){
+		test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+		_("test_status").innerHTML = "Test Completed";
+		pos = 0;
+		correct = 0;
+		return false;
+	}
+	_("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+	question = questions[pos][0];
+	chA = questions[pos][1];
+	chB = questions[pos][2];
+	chC = questions[pos][3];
+	test.innerHTML = "<h3>"+question+"</h3>";
+	test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
+	test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
+	test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br><br>";
+	test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>"; 
+}
+// For loop
+function checkAnswer(){
+	choices = document.getElementsByName("choices");
+	for(var i=0; i<choices.length; i++){
+		if(choices[i].checked){
+			choice = choices[i].value;
+		}
+	}
+	if(choice == questions[pos][4]){
+		correct++;
+	}
+	pos++;
+	renderQuestion();
+}
+window.addEventListener("load", renderQuestion, false);
+
+
+
+</script>
+</head>
+<body>
+<h2 id="test_status"></h2>
+<div id="test"></div>
+<!-- Have to work on the timer -->
+<div id="timer" style="background-image: url(http://eskipaper.com/images/ancient-backgrounds-1.jpg")></div>
+<div class="footer">&copy; Copyright 2016 Angela Davis</div>
+</body>
+</html>

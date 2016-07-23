@@ -1,0 +1,50 @@
+body {
+	max-width: 960px; 
+	margin-left: auto; 
+	margin-right: auto;
+	background-color: #ffa500;
+	
+	
+
+}
+#name{
+	font-family: 'BioRhyme Expanded', serif;
+	text-align: center; 
+	margin-top: 75px;
+	color: #ffa500;
+	line-height: 100px;
+	border-top: double; 
+
+}
+#header{
+	height: 100px;
+	
+}
+
+
+
+#container{
+
+	max-width: 960px;
+}
+
+#test{
+
+	border:#000 1px solid; 
+	padding:10px 40px 40px 40px; 
+}
+#timer{
+text-align: center;
+font-family: 'BioRhyme Expanded', serif;
+font-size: 25px;
+color: white;
+height: 250px;
+margin-top: 15px;
+}
+
+.footer{
+
+	text-align: center;
+	border-top: double;
+		
+}
